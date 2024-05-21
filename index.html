@@ -14,6 +14,8 @@
         .main-container {
             display: flex;
             align-items: center;
+            justify-content: space-between;
+            padding: 20px;
         }
 
         .content {
@@ -21,34 +23,42 @@
             padding-right: 20px; /* Adjust as needed */
         }
 
-        .buttons {
-            margin-bottom: 20px; /* Space between buttons and the rest of the content */
-        }
-
-        .button {
-            display: inline-block;
-            margin-right: 10px; /* Space between buttons */
-            padding: 10px 20px;
-            background-color: #C70039;
-            color: white;
-            text-align: center;
-            cursor: pointer;
-        }
-
         .image-container {
             flex: 1;
-            text-align: 70px;
+            text-align: right;
         }
 
         .image-container img {
             max-width: 100%;
             height: auto;
         }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px 20px;
+            background-color: #C70039; /* Change to desired color */
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 5px; /* Adjust if you want rounded corners */
+        }
+
+        .button:hover {
+            background-color: #000000; /* Change to desired hover color */
+        }
     </style>
 </head>
 <body>
     <div class="main-container">
         <div class="content">
+            <h1 class="header">Mental.rip</h1>
+            <p class="smaller"></p>
             <div class="buttons">
                 <div class="button" onclick="location.href='discord'">
                     Discord
@@ -57,11 +67,9 @@
                     Preview
                 </div>
             </div>
-            <h1 class="header">Mental.rip</h1>
-            <p class="smaller"></p>
         </div>
         <div class="image-container">
-            <img src="assets/favicon.png" alt="Description of your image">
+            <img src="assets/favicon.png" alt="skibidi toilet">
         </div>
     </div>
 </body>
