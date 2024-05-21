@@ -33,7 +33,57 @@
             height: auto;
         }
 
+ 
+
+        .registration-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .registration-form input {
+            margin: 5px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #C70039;
+        }
+
+        .registration-form button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #C70039;
+            color: white;
+            cursor: pointer;
+        }
+
+        .registration-form button:hover {
+            background-color: #A5002C;
+        }
     </style>
+    <script>
+        async function register(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const response = await fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
+
+            if (response.ok) {
+                alert('User registered successfully');
+            } else {
+                alert('Error registering user');
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="main-container">
@@ -48,9 +98,14 @@
                     Preview
                 </div>
             </div>
+            <form class="registration-form" onsubmit="register(event)">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Register</button>
+            </form>
         </div>
         <div class="image-container">
-            <img src="assets/favicon.png" alt="skibidi toilet">
+            <img src="assets/favicon.png" alt="Description of your image">
         </div>
     </div>
 </body>
