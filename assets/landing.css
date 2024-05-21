@@ -154,8 +154,8 @@ body {
 .button:hover {
     transition: 0.2s;
     background-color: #000;
-    color: #470014;
-    border: solid 1px #470014;
+    color: #C70039;
+    border: solid 1px #C70039;
     cursor: pointer;
     transform: scale(105%);
     display: flex;
