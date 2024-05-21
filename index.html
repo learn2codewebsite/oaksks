@@ -11,72 +11,54 @@
     <meta content="#C70039" data-react-helmet="true" name="theme-color" />
     <link rel="stylesheet" href="assets/landing.css">
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-        
         .main-container {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 20px;
         }
 
         .content {
             flex: 1;
+            padding-right: 20px; /* Adjust as needed */
+        }
+
+        .buttons {
+            margin-bottom: 20px; /* Space between buttons and the rest of the content */
+        }
+
+        .button {
+            display: inline-block;
+            margin-right: 10px; /* Space between buttons */
+            padding: 10px 20px;
+            background-color: #C70039;
+            color: white;
+            text-align: center;
+            cursor: pointer;
         }
 
         .image-container {
             flex: 1;
-            text-align: right;
-            margin-left: 20px; /* Adjust as needed */
+            text-align: 70px;
         }
 
         .image-container img {
             max-width: 100%;
             height: auto;
         }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding: 10px 20px;
-            box-sizing: border-box;
-        }
-
-        .registration-button {
-            margin-left: auto;
-        }
-
-        .registration-button button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
     </style>
 </head>
 <body>
-    <div class="header-container">
-        <div class="registration-button">
-            <button onclick="location.href='registration.html'">Register</button>
-        </div>
-    </div>
     <div class="main-container">
         <div class="content">
-            <h1 class="header">Welcome To</h1>
-            <p class="smaller">mental.rip</p>
             <div class="buttons">
-                <div class="button" onclick="location.href='preview.html'">
-                    Preview
-                </div>
                 <div class="button" onclick="location.href='discord'">
                     Discord
                 </div>
+                <div class="button" onclick="location.href='preview'">
+                    Preview
+                </div>
             </div>
+            <h1 class="header">mental.rip</h1>
+            <p class="smaller">perhaps best bio page</p>
         </div>
         <div class="image-container">
             <img src="assets/favicon.png" alt="Description of your image">
