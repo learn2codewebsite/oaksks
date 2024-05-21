@@ -10,19 +10,25 @@
     <meta property="og:image" content="assets/favicon.png" />
     <meta content="#C70039" data-react-helmet="true" name="theme-color" />
     <link rel="stylesheet" href="assets/landing.css">
+
     <style>
-        .main-container {
-            text-align: center;
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.5);
+            }
+            to {
+                transform: scale(1);
+            }
         }
-        img {
-            width: 80%; /* Adjust the width as needed */
-            transform: scale(1.5); /* Adjust the scale factor as needed */
+
+        .main-container img {
+            animation: zoomIn 1s ease-out;
         }
     </style>
 </head>
 <body>
     <div class="main-container">
-        <img src="assets/New Project (1) (1) (2) (2).png" alt="aedkjdks">
+        <img src="assets/New Project (1) (1) (2) (2).png" alt="Description of your image" style="width: 100px; height: 100px;">
         <h1 class="header">mental.rip</h1>
         <p class="smaller">perhaps best bio page</p>
         <div class="buttons">
