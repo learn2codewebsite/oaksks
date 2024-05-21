@@ -10,11 +10,26 @@
     <meta property="og:image" content="assets/favicon.png" />
     <meta content="#C70039" data-react-helmet="true" name="theme-color" />
     <link rel="stylesheet" href="assets/landing.css">
+    <style>
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .main-container img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
     <div class="main-container">
         <h1 class="header">mental.rip</h1>
         <p class="smaller">perhaps best bio page</p>
+        <img src="assets/favicon.png" alt="Centered Image">
         <div class="buttons">
             <div class="button" onclick="location.href='discord'">
                 Discord
