@@ -49,6 +49,22 @@ const UserSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', UserSchema);
 
+// Middleware to verify token
+const auth = (req, res, next) => {
+    const token = req.header('x-auth-token');
+    if (!token) {
+        return res.status(401).json({ msg: 'No token, authorization denied' });
+    }
+
+    try {
+        const decoded = jwt.verify(token, 'your_jwt_secret'); // Use environment variable in production
+        req.user = decoded.user;
+        next();
+    } catch (err) {
+        res.status(401).json({ msg: 'Token is not valid' });
+    }
+};
+
 // Register new user
 app.post('/api/auth/register', async (req, res) => {
     const { username, email, password } = req.body;
@@ -104,28 +120,4 @@ app.post('/api/auth/login', async (req, res) => {
             return res.status(400).json({ msg: 'Invalid Credentials' });
         }
 
-        const payload = {
-            user: {
-                id: user.id
-            }
-        };
-
-        jwt.sign(
-            payload,
-            'your_jwt_secret', // Use environment variable in production
-            { expiresIn: 360000 },
-            (err, token) => {
-                if (err) throw err;
-                res.json({ token });
-            }
-        );
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server error');
-    }
-});
-
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
-          
+    
