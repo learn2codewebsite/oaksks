@@ -1,117 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>mental.rip</title>
-    <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.png">
-    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
-    <meta content="mental.rip" property="og:title" />
-    <meta content="lose your mental." property="og:description" />
-    <meta content="https://mental.rip/" property="og:url" />
-    <meta property="og:image" content="assets/favicon.png" />
-    <meta content="#C70039" data-react-helmet="true" name="theme-color" />
-    <link rel="stylesheet" href="assets/landing.css">
-    <style>
-        .main-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px;
-        }
-
-        .content {
-            flex: 1;
-            padding-right: 20px; /* Adjust as needed */
-        }
-
-        .image-container {
-            flex: 1;
-            text-align: right;
-        }
-
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .form-container {
-            flex: 1;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        .form-group button {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            background-color: #C70039;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        .form-group button:hover {
-            background-color: #A5002C;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register & Login</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="main-container">
-        <div class="content">
-            <h1 class="header">mental.rip</h1>
-            <p class="smaller">perhaps best bio page</p>
-            <div class="form-container">
-                <h2>Register</h2>
-                <div class="form-group">
-                    <input type="text" placeholder="Username">
-                </div>
-                <div class="form-group">
-                    <input type="email" placeholder="Email">
-                </div>
-                <div class="form-group">
-                    <input type="password" placeholder="Password">
-                </div>
-                <div class="form-group">
-                    <button onclick="register()">Register</button>
-                </div>
-            </div>
-            <div class="form-container">
-                <h2>Login</h2>
-                <div class="form-group">
-                    <input type="email" placeholder="Email">
-                </div>
-                <div class="form-group">
-                    <input type="password" placeholder="Password">
-                </div>
-                <div class="form-group">
-                    <button onclick="login()">Login</button>
-                </div>
-            </div>
-        </div>
-        <div class="image-container">
-            <img src="path_to_your_image.jpg" alt="Description of your image">
-        </div>
+    <div class="form-container">
+        <form id="register-form">
+            <h2>Register</h2>
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Register</button>
+        </form>
+        <form id="login-form">
+            <h2>Login</h2>
+            <input type="email" id="login-email" placeholder="Email" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
     </div>
-
-    <script>
-        function register() {
-            // Implement registration logic here
-            alert("Registration logic goes here.");
-        }
-
-        function login() {
-            // Implement login logic here
-            alert("Login logic goes here.");
-        }
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>
