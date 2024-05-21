@@ -2,9 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const cors = require('cors'); // Add CORS support
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors()); // Enable CORS
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/registration', { useNewUrlParser: true, useUnifiedTopology: true })
