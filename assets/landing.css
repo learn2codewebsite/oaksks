@@ -154,8 +154,8 @@ body {
 .button:hover {
     transition: 0.2s;
     background-color: #000;
-    color: #470014;
-    border: solid 1px #470014;
+    color: #fff;
+    border: solid 1px #C70039;
     cursor: pointer;
     transform: scale(105%);
     display: flex;
@@ -169,12 +169,12 @@ body {
     justify-content: center;
     transition: 0.2s;
     padding: 15px;
-    color: var(--header);
+    color: #C70039;
     text-align: center;
     border-radius: 9px;
     margin: 10px;
-    border: solid 1px var(--header);
-    background-color: #00000000;
+    border: solid 1px #C70039;
+    background-color: #C70039;
     box-shadow: 0px 0px 0px 0px var(--header);
     width: 100%;
     box-sizing: border-box;
