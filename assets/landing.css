@@ -119,6 +119,10 @@ body {
     overflow: hidden !important;
 }
 
+body {
+    cursor: url('assets/custom-cursor.png'), auto;
+}
+
 .main-container {
     position: absolute;
     top: 50%;
