@@ -24,11 +24,12 @@ body,footer,header{
     font-family:'Classic Console',monospace;
 }
 
-body{
-    margin:0;
-    cursor:default;
+body {
+    margin: 0;
+    cursor: url('assets/favicon.png'), auto;
     animation: 0.7s ease-in-out forwards fadeIn;
 }
+
 
 header{
     font-family:minecraftia,sans-serif!important;
@@ -119,9 +120,6 @@ body {
     overflow: hidden !important;
 }
 
-body {
-    cursor: url('assets/favicon.png'), auto;
-}
 
 .main-container {
     position: absolute;
