@@ -1,99 +1,113 @@
 @import url(https://webdraft.hu/fonts/classic-console/fonts/clacon2.woff2);
 @import url(https://fonts.googleapis.com/css2?family=Libre+Barcode+128&display=swap);
 
-body, footer, header {
-    padding: 0; 
+body,footer,header{
+    padding:0; 
     margin-top: 10px;
 }
 
-#mydiv, footer, header {
-    text-align: center;
+#mydiv,footer,header{
+    text-align:center
 }
 
-#mydiv, #mydivheader, body {
-    background-color: #000;
-    color: #fff;
+#mydiv,#mydivheader,body{
+    background-color:#000;
+    color:#fff
 }
 
-@font-face {
-    font-family: 'Classic Console';
-    src: url('https://webdraft.hu/fonts/classic-console/fonts/clacon2.woff2') format('woff2');
+@font-face{
+    font-family:'Classic Console';
+    src:url('https://webdraft.hu/fonts/classic-console/fonts/clacon2.woff2') format('woff2')
 }
 
-* {
-    font-family: 'Classic Console', monospace;
+*{
+    font-family:'Classic Console',monospace;
 }
 
 body {
     margin: 0;
     cursor: url('assets/favicon.png'), auto;
     animation: 0.7s ease-in-out forwards fadeIn;
-    position: relative; /* Added for fog overlay */
-}
-
-header {
-    font-family: minecraftia, sans-serif !important;
-    font-size: 13px;
-    letter-spacing: 15px;
-}
-
-main {
-    padding: 45px;
-}
-
-footer {
-    font-family: 'Libre Barcode 128', system-ui;
-    font-size: 20px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-#mydiv {
-    position: absolute;
-    z-index: 9;
-    border: 2px solid #fff;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    left: 50%;
-    top: 50%;
-}
-
-#left-image {
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    z-index: 10;
-    width: 47px;
-    height: auto;
-}
-
-#myDiv p {
-    margin-bottom: 10px;
-}
-
-#mydivheader {
-    padding: 15px;
-    z-index: 1;
     position: relative;
+    overflow: hidden;
 }
 
-#mydivheader:after {
+body::before {
     content: "";
-    display: block;
-    width: 30%;
-    height: 2px;
-    background-color: #fff;
-    margin: 0 auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1); /* Light white overlay */
+    z-index: 8; /* Behind most other elements */
+    pointer-events: none; /* Allow clicking through the fog */
+    backdrop-filter: blur(5px); /* Blur effect to simulate fog */
+}
+
+header{
+    font-family:minecraftia,sans-serif!important;
+    font-size:13px;
+    letter-spacing:15px
+}
+
+main{
+    padding:45px
+}
+
+footer{
+    font-family:'Libre Barcode 128',system-ui;
+    font-size:20px;
+    position:fixed;
+    bottom:0;
+    width:100%
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0
+    }
+    to{
+        opacity:1
+    }
+}
+
+#mydiv{
+    position:absolute;
+    z-index:9;
+    border:2px solid #fff;
+    transform:translate(-50%,-50%);
+    width:400px;
+    left:50%;
+    top:50%
+}
+
+#left-image{
+    position:absolute;
+    left:10px;
+    top:10px;
+    z-index:10;
+    width:47px;
+    height:auto
+}
+
+#myDiv p{
+    margin-bottom:10px
+}
+
+#mydivheader{
+    padding:15px;
+    z-index:1;
+    position:relative
+}
+
+#mydivheader:after{
+    content:"";
+    display:block;
+    width:30%;
+    height:2px;
+    background-color:#fff;
+    margin:0 auto
 }
 
 :root {
@@ -180,33 +194,4 @@ body {
     width: 100%;
     box-sizing: border-box;
     white-space: nowrap;
-}
-
-/* Fog Overlay Effect */
-body::before,
-body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    background: rgba(255, 255, 255, 0.05);
-    filter: blur(10px);
-    z-index: 1;
-}
-
-body::after {
-    background: rgba(255, 255, 255, 0.1);
-    animation: moveFog 30s linear infinite;
-}
-
-@keyframes moveFog {
-    0% {
-        transform: translateX(-100%);
-    }
-    100% {
-        transform: translateX(100%);
-    }
 }
