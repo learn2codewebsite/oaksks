@@ -1,0 +1,44 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    background: #2c3e50; /* Background color */
+}
+
+.fog-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.fog {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: url('https://i.imgur.com/Y2JYzFM.png') repeat; /* You can replace this with your fog image */
+    opacity: 0.6;
+    animation: moveFog 60s linear infinite;
+}
+
+.fog:nth-child(2) {
+    opacity: 0.4;
+    animation: moveFog 120s linear infinite;
+}
+
+.fog:nth-child(3) {
+    opacity: 0.2;
+    animation: moveFog 180s linear infinite;
+}
+
+@keyframes moveFog {
+    0% {
+        transform: translate(-50%, -50%);
+    }
+    100% {
+        transform: translate(50%, 50%);
+    }
+}
