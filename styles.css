@@ -19,7 +19,7 @@ body, html {
     left: 0;
     width: 200%;
     height: 200%;
-    background: url('https://i.imgur.com/Y2JYzFM.png') repeat; /* You can replace this with your fog image */
+    background: url('assets/fog.png') repeat; /* You can replace this with your fog image */
     opacity: 0.6;
     animation: moveFog 60s linear infinite;
 }
