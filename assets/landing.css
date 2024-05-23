@@ -3,7 +3,7 @@
 
 body, footer, header {
     padding: 0; 
-    margin-top: 10px;
+    margin: 0;
 }
 
 #mydiv, footer, header {
@@ -29,16 +29,19 @@ body {
     cursor: url('assets/favicon.png'), auto;
     animation: 0.7s ease-in-out forwards fadeIn, 0.1s dizzy infinite;
     overflow: hidden !important;
+    color: #fff; /* Ensuring text is white */
 }
 
 header {
     font-family: minecraftia, sans-serif !important;
     font-size: 13px;
     letter-spacing: 15px;
+    color: #fff; /* Ensuring text is white */
 }
 
 main {
     padding: 45px;
+    color: #fff; /* Ensuring text is white */
 }
 
 footer {
@@ -47,6 +50,7 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+    color: #fff; /* Ensuring text is white */
 }
 
 @keyframes fadeIn {
@@ -74,6 +78,7 @@ footer {
     width: 400px;
     left: 50%;
     top: 50%;
+    color: #fff; /* Ensuring text is white */
 }
 
 #left-image {
@@ -87,12 +92,14 @@ footer {
 
 #myDiv p {
     margin-bottom: 10px;
+    color: #fff; /* Ensuring text is white */
 }
 
 #mydivheader {
     padding: 15px;
     z-index: 1;
     position: relative;
+    color: #fff; /* Ensuring text is white */
 }
 
 #mydivheader:after {
@@ -128,6 +135,7 @@ footer {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    color: #fff; /* Ensuring text is white */
 }
 
 .header {
@@ -165,7 +173,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-}       
+}
 
 .button {
     display: flex;
