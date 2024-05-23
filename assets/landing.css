@@ -28,6 +28,8 @@ body {
     margin: 0;
     cursor: url('assets/favicon.png'), auto;
     animation: 0.7s ease-in-out forwards fadeIn;
+    background: url('assets/fog.png') no-repeat center center fixed; /* Add your custom background here */
+    background-size: cover;
 }
 
 header {
