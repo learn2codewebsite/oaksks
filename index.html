@@ -30,15 +30,25 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             width: 300px; /* Adjust width as needed */
             margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Button container styling */
+        .button-container {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            margin-top: 20px;
         }
 
         /* Button styling */
         .button {
-            display: block;
-            width: 100%;
-            margin-top: 20px;
+            width: calc(50% - 10px);
             padding: 10px;
-            background-color: #C70039;
+            background-color: #007bff;
             color: white;
             border: none;
             border-radius: 5px;
@@ -47,16 +57,18 @@
         }
 
         .button:hover {
-            background-color: #000;
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
     <div class="content">
-        <h1>Mental.rip</h1>
-        <p></p>
-        <a class="button" href="https://discord.com/invite/MkyRK9CqZc">Discord</a>
-        <a class="button" href="">Preview</a>
+        <h1>Welcome to My Website</h1>
+        <p>This text moves in random directions.</p>
+        <div class="button-container">
+            <a class="button" href="https://www.youtube.com/your_channel">Visit My YouTube Channel</a>
+            <a class="button" href="https://www.youtube.com/your_channel">Subscribe</a>
+        </div>
     </div>
 
     <script>
