@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dizzy Overlay Website</title>
+    <title>Wavy Overlay Website</title>
     <style>
         /* Set the custom background */
         body {
@@ -13,12 +13,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: url('assets/fog.png') no-repeat center center/cover;
+            background: url('your-background-image.jpg') no-repeat center center/cover;
             overflow: hidden;
             position: relative;
         }
 
-        /* Dizzy overlay effect */
+        /* Wavy overlay effect */
         body::before {
             content: "";
             position: absolute;
@@ -28,25 +28,26 @@
             height: 100%;
             background: rgba(255, 255, 255, 0.1);
             mix-blend-mode: overlay;
-            animation: dizzyEffect 3s infinite;
+            animation: wavyEffect 5s infinite;
             pointer-events: none;
         }
 
-        @keyframes dizzyEffect {
-            0% {
-                transform: rotate(0deg) scale(1);
+        @keyframes wavyEffect {
+            0%, 100% {
+                transform: translateY(0);
+                opacity: 1;
             }
             25% {
-                transform: rotate(5deg) scale(1.05);
+                transform: translateY(-20px);
+                opacity: 0.8;
             }
             50% {
-                transform: rotate(0deg) scale(1);
+                transform: translateY(0);
+                opacity: 1;
             }
             75% {
-                transform: rotate(-5deg) scale(1.05);
-            }
-            100% {
-                transform: rotate(0deg) scale(1);
+                transform: translateY(20px);
+                opacity: 0.8;
             }
         }
 
@@ -64,8 +65,8 @@
 </head>
 <body>
     <div class="content">
-        <h1>Welcome to My dizzy site</h1>
-        <p>This website has a custom background and a dizzy overlay effect.</p>
+        <h1>Welcome to My Website</h1>
+        <p>This website has a custom background and a wavy overlay effect.</p>
     </div>
 </body>
 </html>
