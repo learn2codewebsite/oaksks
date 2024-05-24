@@ -27,12 +27,6 @@
             background: rgba(0, 0, 0, 0.5);
             padding: 20px;
             border-radius: 10px;
-            animation: moveText 5s linear infinite alternate;
-        }
-
-        @keyframes moveText {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(20px, 20px); }
         }
     </style>
 </head>
@@ -41,5 +35,41 @@
         <h1>Welcome to My Website</h1>
         <p>This text moves in random directions.</p>
     </div>
+
+    <script>
+        const content = document.querySelector('.content');
+        let deltaX = 1;
+        let deltaY = 1;
+
+        function moveText() {
+            const speed = 1;
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+
+            const rect = content.getBoundingClientRect();
+            const left = rect.left;
+            const right = rect.right;
+            const top = rect.top;
+            const bottom = rect.bottom;
+
+            if (left <= 0 || right >= screenWidth) {
+                deltaX *= -1;
+            }
+
+            if (top <= 0 || bottom >= screenHeight) {
+                deltaY *= -1;
+            }
+
+            const newPosX = parseInt(content.style.left || 0) + (speed * deltaX);
+            const newPosY = parseInt(content.style.top || 0) + (speed * deltaY);
+
+            content.style.left = `${newPosX}px`;
+            content.style.top = `${newPosY}px`;
+
+            requestAnimationFrame(moveText);
+        }
+
+        moveText();
+    </script>
 </body>
 </html>
