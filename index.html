@@ -10,7 +10,7 @@
       padding: 0;
       height: 100%;
       overflow: hidden;
-      background-image: url('assets/favicon.png'); /* Replace with your image file */
+      background-image: url('your_background_image.jpg'); /* Replace with your image file */
       background-size: cover;
       background-position: center;
       position: relative;
@@ -19,21 +19,17 @@
     .bubble {
       position: absolute;
       bottom: -50px;
-      width: 20px;
-      height: 20px;
       background-color: rgba(255, 255, 255, 0.7);
       border-radius: 50%;
       opacity: 0;
-      animation: floatBubble 5s linear;
+      animation: floatBubble 5s linear forwards;
     }
 
     .droplet {
       position: absolute;
-      width: 2px;
-      height: 40px;
       background-color: rgba(0, 0, 255, 0.5);
       opacity: 0;
-      animation: dropDroplet 2s linear;
+      animation: dropDroplet 2s linear forwards;
     }
 
     @keyframes floatBubble {
@@ -44,8 +40,22 @@
       50% {
         opacity: 1;
       }
+      80% {
+        opacity: 1;
+      }
       100% {
-        transform: translateY(-100vh);
+        transform: translateY(-80vh);
+        opacity: 0;
+      }
+    }
+
+    @keyframes popBubble {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1.2);
         opacity: 0;
       }
     }
@@ -76,8 +86,11 @@
 
       setTimeout(() => {
         const bubbleRect = bubble.getBoundingClientRect();
-        createDroplet(bubbleRect.left + window.scrollX, bubbleRect.top + window.scrollY, bubble.style.width);
-        bubble.remove();
+        bubble.style.animation = 'popBubble 0.5s forwards';
+        setTimeout(() => {
+          createDroplet(bubbleRect.left + window.scrollX, bubbleRect.top + window.scrollY + parseFloat(bubble.style.height) / 2, bubble.style.width);
+          bubble.remove();
+        }, 500); // Delay to allow the pop animation to complete
       }, popTime); // Bubble pops at a random time
     }
 
