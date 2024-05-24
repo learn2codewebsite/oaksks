@@ -3,59 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Advanced Moving Cloud Effect</title>
+  <title>Bubble Effect</title>
   <style>
     body, html {
       margin: 0;
       padding: 0;
       height: 100%;
       overflow: hidden;
-      background-image: url('assets/fog.png'); /* Replace with your image file */
+      background-image: url('your_background_image.jpg'); /* Replace with your image file */
       background-size: cover;
       background-position: center;
-    }
-
-    .cloud-layer {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 20%, rgba(255, 255, 255, 0) 60%);
-      opacity: 0.3;
-      pointer-events: none;
-      z-index: 1;
-      animation: moveClouds 60s linear infinite;
-    }
-
-    .cloud-layer:nth-child(2) {
-      animation: moveClouds 120s linear infinite;
-      opacity: 0.2;
-    }
-
-    .cloud-layer:nth-child(3) {
-      animation: moveClouds 180s linear infinite;
-      opacity: 0.1;
-    }
-
-    @keyframes moveClouds {
-      0% { transform: translateX(0) translateY(0); }
-      100% { transform: translateX(-25%) translateY(-25%); }
-    }
-
-    h1 {
       position: relative;
-      z-index: 2;
-      color: white;
-      text-align: center;
-      margin-top: 20%;
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -50px;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 50%;
+      opacity: 0;
+      animation: floatBubble 5s linear infinite;
+    }
+
+    @keyframes floatBubble {
+      0% {
+        transform: translateY(0);
+        opacity: 0.7;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-200vh);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="cloud-layer"></div>
-  <div class="cloud-layer"></div>
-  <div class="cloud-layer"></div>
-  <h1>Welcome to My Website!</h1>
+  <script>
+    function createBubble() {
+      const bubble = document.createElement('div');
+      bubble.className = 'bubble';
+      bubble.style.left = Math.random() * 100 + 'vw';
+      bubble.style.width = Math.random() * 20 + 10 + 'px';
+      bubble.style.height = bubble.style.width;
+      document.body.appendChild(bubble);
+
+      setTimeout(() => {
+        bubble.remove();
+      }, 5000); // Remove the bubble after 5 seconds
+    }
+
+    setInterval(createBubble, 500); // Create a new bubble every 500ms
+  </script>
 </body>
 </html>
