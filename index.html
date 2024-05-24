@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wavy Background Website</title>
+    <title>Dizzy Background Website</title>
     <style>
         /* Set the custom background */
         body {
@@ -15,27 +15,44 @@
             align-items: center;
             overflow: hidden;
             position: relative;
-            background: url('assets/favicon.png') no-repeat center center/cover;
-            animation: wavyBackground 5s infinite;
+            background: url('your-background-image.jpg') no-repeat center center/cover;
+            animation: dizzyBackground 10s infinite;
         }
 
-        /* Wavy background animation */
-        @keyframes wavyBackground {
-            0%, 100% {
-                background-position: center center;
-                transform: translateY(0) rotate(0deg);
+        /* Dizzy background animation */
+        @keyframes dizzyBackground {
+            0% {
+                transform: rotate(0deg) scale(1) translate(0, 0);
             }
-            25% {
-                background-position: center top;
-                transform: translateY(-10px) rotate(1deg);
+            10% {
+                transform: rotate(10deg) scale(1.1) translate(10px, -10px);
+            }
+            20% {
+                transform: rotate(-10deg) scale(1) translate(-10px, 10px);
+            }
+            30% {
+                transform: rotate(15deg) scale(1.05) translate(15px, -15px);
+            }
+            40% {
+                transform: rotate(-15deg) scale(1) translate(-15px, 15px);
             }
             50% {
-                background-position: center center;
-                transform: translateY(0) rotate(0deg);
+                transform: rotate(20deg) scale(1.1) translate(20px, -20px);
             }
-            75% {
-                background-position: center bottom;
-                transform: translateY(10px) rotate(-1deg);
+            60% {
+                transform: rotate(-20deg) scale(1) translate(-20px, 20px);
+            }
+            70% {
+                transform: rotate(25deg) scale(1.05) translate(25px, -25px);
+            }
+            80% {
+                transform: rotate(-25deg) scale(1) translate(-25px, 25px);
+            }
+            90% {
+                transform: rotate(30deg) scale(1.1) translate(30px, -30px);
+            }
+            100% {
+                transform: rotate(0deg) scale(1) translate(0, 0);
             }
         }
 
@@ -53,8 +70,8 @@
 </head>
 <body>
     <div class="content">
-        <h1>Welcome to My e</h1>
-        <p>This website has a wavy background effect.</p>
+        <h1>Welcome to My Website</h1>
+        <p>This website has a dizzy background effect.</p>
     </div>
 </body>
 </html>
