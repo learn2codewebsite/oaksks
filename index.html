@@ -1,136 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Direction Text Website</title>
-    <style>
-        /* Set the custom background */
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            position: relative;
-            background: url('your-background-image.jpg') no-repeat center center/cover;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moving Foggy Effect</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background-image: url('assets/fog.png'); /* Replace 'your_background_image.jpg' with your image file */
+      background-size: cover;
+    }
 
-        /* Foggy overlay */
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.3); /* Adjust the opacity as needed */
-            z-index: 0;
-        }
-
-        /* Content styling */
-        .content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            color: white;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            width: 300px; /* Adjust width as needed */
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border: 2px solid white; /* Add border with white color */
-        }
-
-        /* Button container styling */
-        .button-container {
-            display: flex;
-            width: 100%;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-
-        /* Button styling */
-        .button {
-            width: 100%;
-            height: 50px;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            margin-top: 15px;
-            transition: 0.2s;
-            padding: 15px;
-            color: #fff;
-            text-align: center;
-            border-radius: 9px;
-            margin: 10px;
-            border: solid 1px #C70039;
-            background-color: #C70039;
-            box-shadow: 0px 0px 0px 0px var(--header);
-            box-sizing: border-box;
-            white-space: nowrap;
-        }
-
-        .button:hover {
-            background-color: #000;
-            color: #C70039;
-            border: solid 1px #C70039;
-            cursor: pointer;
-            transform: scale(105%);
-        }
-    </style>
+    .fog {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.5);
+      pointer-events: none;
+      z-index: 1;
+    }
+  </style>
 </head>
 <body>
-    <div class="content">
-        <h1>Welcome to My Website</h1>
-        <p>This text moves in random directions.</p>
-        <div class="button-container">
-            <a class="button" href="https://www.youtube.com/your_channel">Visit My YouTube Channel</a>
-            <a class="button" href="https://www.youtube.com/your_channel">Subscribe</a>
-        </div>
-    </div>
+  <div class="fog" style="background-position: 0 0;"></div>
+  <h1>Welcome to My Website!</h1>
+  <script>
+    const fog = document.querySelector('.fog');
 
-    <script>
-        const content = document.querySelector('.content');
-        let deltaX = 1;
-        let deltaY = 1;
+    function moveFog(event) {
+      const speed = 0.05; // Adjust the speed of fog movement
+      const x = event.clientX * speed;
+      const y = event.clientY * speed;
 
-        function moveText() {
-            const speed = 1;
-            const screenWidth = window.innerWidth;
-            const screenHeight = window.innerHeight;
+      fog.style.backgroundPosition = `${x}px ${y}px`;
+    }
 
-            const rect = content.getBoundingClientRect();
-            const left = rect.left;
-            const right = rect.right;
-            const top = rect.top;
-            const bottom = rect.bottom;
-
-            if (left <= 0 || right >= screenWidth) {
-                deltaX *= -1;
-            }
-
-            if (top <= 0 || bottom >= screenHeight) {
-                deltaY *= -1;
-            }
-
-            const newPosX = parseInt(content.style.left || 0) + (speed * deltaX);
-            const newPosY = parseInt(content.style.top || 0) + (speed * deltaY);
-
-            content.style.left = `${newPosX}px`;
-            content.style.top = `${newPosY}px`;
-
-            requestAnimationFrame(moveText);
-        }
-
-        moveText();
-    </script>
+    document.addEventListener('mousemove', moveFog);
+  </script>
 </body>
 </html>
