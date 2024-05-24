@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Direction Background Website</title>
+    <title>Random Direction Text Website</title>
     <style>
         /* Set the custom background */
         body {
@@ -15,8 +15,7 @@
             align-items: center;
             overflow: hidden;
             position: relative;
-            background: url('assets/favicon.png') no-repeat center center/cover;
-            animation: moveBackground 5s linear infinite;
+            background: url('your-background-image.jpg') no-repeat center center/cover;
         }
 
         /* Content styling */
@@ -28,58 +27,19 @@
             background: rgba(0, 0, 0, 0.5);
             padding: 20px;
             border-radius: 10px;
+            animation: moveText 5s linear infinite alternate;
         }
 
-        @keyframes moveBackground {
-            0% { background-position: 0 0; }
-            100% { background-position: 100% 100%; }
+        @keyframes moveText {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(20px, 20px); }
         }
     </style>
 </head>
 <body>
     <div class="content">
         <h1>Welcome to My Website</h1>
-        <p>This website has a random direction background effect.</p>
+        <p>This text moves in random directions.</p>
     </div>
-
-    <script>
-        function randomDirection() {
-            return Math.random() < 0.5 ? -1 : 1;
-        }
-
-        const content = document.querySelector('.content');
-        let deltaX = randomDirection();
-        let deltaY = randomDirection();
-
-        function moveBackground() {
-            const speed = 1;
-            const screenWidth = window.innerWidth;
-            const screenHeight = window.innerHeight;
-
-            const rect = content.getBoundingClientRect();
-            const left = rect.left;
-            const right = rect.right;
-            const top = rect.top;
-            const bottom = rect.bottom;
-
-            if (left <= 0 || right >= screenWidth) {
-                deltaX *= -1;
-            }
-
-            if (top <= 0 || bottom >= screenHeight) {
-                deltaY *= -1;
-            }
-
-            const newPosX = parseInt(content.style.backgroundPositionX || 0) + (speed * deltaX);
-            const newPosY = parseInt(content.style.backgroundPositionY || 0) + (speed * deltaY);
-
-            content.style.backgroundPositionX = `${newPosX}px`;
-            content.style.backgroundPositionY = `${newPosY}px`;
-
-            requestAnimationFrame(moveBackground);
-        }
-
-        moveBackground();
-    </script>
 </body>
 </html>
