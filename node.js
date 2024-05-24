@@ -6,13 +6,13 @@ function createBubble() {
   bubble.style.height = bubble.style.width;
   document.body.appendChild(bubble);
 
-  const popTime = Math.random() * 5000; // Random time between 0 and 5000 ms
+  const popTime = Math.random() * 5000; 
 
   setTimeout(() => {
     const bubbleRect = bubble.getBoundingClientRect();
     explodeBubble(bubbleRect.left + window.scrollX, bubbleRect.top + window.scrollY, bubble.style.width);
     bubble.remove();
-  }, popTime); // Bubble pops at a random time
+  }, popTime); 
 }
 
 function explodeBubble(left, top, size) {
@@ -27,8 +27,8 @@ function explodeBubble(left, top, size) {
     particle.style.width = particleSize + 'px';
     particle.style.height = particleSize + 'px';
 
-    const angle = Math.random() * 2 * Math.PI; // Random angle
-    const distance = Math.random() * 100; // Random distance
+    const angle = Math.random() * 2 * Math.PI; 
+    const distance = Math.random() * 100; 
     const endX = Math.cos(angle) * distance;
     const endY = Math.sin(angle) * distance;
 
@@ -40,8 +40,8 @@ function explodeBubble(left, top, size) {
 
     setTimeout(() => {
       particle.remove();
-    }, 1000); // Remove the particle after 1 second
+    }, 1000); 
   }
 }
 
-setInterval(createBubble, 500); // Create a new bubble every 500ms
+setInterval(createBubble, 500); 
