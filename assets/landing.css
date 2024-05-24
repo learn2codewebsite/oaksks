@@ -28,8 +28,8 @@ body {
     margin: 0;
     cursor: url('assets/favicon.png'), auto;
     animation: 0.7s ease-in-out forwards fadeIn;
-    background: url('assets/fog.png') no-repeat center center fixed; /* Add your custom background here */
-    background-size: cover;
+    background: url('your-custom-background.jpg') no-repeat center center fixed; /* Add your custom background here */
+    background-size: cover; /* Adjust to cover the whole viewport */
 }
 
 header {
@@ -86,6 +86,8 @@ footer {
     left: 50%;
     top: 50%;
     animation: dizzy 1s infinite;
+    background-color: rgba(0, 0, 0, 0.7); /* Add a semi-transparent background */
+    padding: 20px; /* Add padding for better visibility */
 }
 
 #left-image {
@@ -195,7 +197,7 @@ body {
     border-radius: 9px;
     margin: 10px;
     border: solid 1px #C70039;
-    background-color: #000;
+    background-color: #C70039;
     box-shadow: 0px 0px 0px 0px var(--header);
     width: 100%;
     box-sizing: border-box;
