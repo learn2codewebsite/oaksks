@@ -4,8 +4,6 @@ body, html {
   height: 100%;
   overflow: hidden;
   background-color: black; /* Replace with your image file */
-  background-size: cover;
-  background-position: center;
   position: relative;
 }
 
