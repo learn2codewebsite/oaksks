@@ -16,43 +16,55 @@
             overflow: hidden;
             position: relative;
             background: url('assets/fog.png') no-repeat center center/cover;
-            animation: dizzyBackground 10s infinite;
+            animation: dizzyBackground 5s infinite;
+            filter: blur(0px);
         }
 
-        /* Dizzy background animation */
+        /* Dizzy background animation with wobble and motion blur */
         @keyframes dizzyBackground {
             0% {
                 transform: rotate(0deg) scale(1) translate(0, 0);
+                filter: blur(0px);
             }
             10% {
-                transform: rotate(10deg) scale(1.1) translate(10px, -10px);
+                transform: rotate(5deg) scale(1.05) translate(10px, -10px);
+                filter: blur(2px);
             }
             20% {
-                transform: rotate(-10deg) scale(1) translate(-10px, 10px);
+                transform: rotate(-5deg) scale(1) translate(-10px, 10px);
+                filter: blur(4px);
             }
             30% {
-                transform: rotate(15deg) scale(1.05) translate(15px, -15px);
+                transform: rotate(10deg) scale(1.05) translate(15px, -15px);
+                filter: blur(2px);
             }
             40% {
-                transform: rotate(-15deg) scale(1) translate(-15px, 15px);
+                transform: rotate(-10deg) scale(1) translate(-15px, 15px);
+                filter: blur(0px);
             }
             50% {
-                transform: rotate(20deg) scale(1.1) translate(20px, -20px);
+                transform: rotate(15deg) scale(1.05) translate(20px, -20px);
+                filter: blur(2px);
             }
             60% {
-                transform: rotate(-20deg) scale(1) translate(-20px, 20px);
+                transform: rotate(-15deg) scale(1) translate(-20px, 20px);
+                filter: blur(4px);
             }
             70% {
-                transform: rotate(25deg) scale(1.05) translate(25px, -25px);
+                transform: rotate(20deg) scale(1.05) translate(25px, -25px);
+                filter: blur(2px);
             }
             80% {
-                transform: rotate(-25deg) scale(1) translate(-25px, 25px);
+                transform: rotate(-20deg) scale(1) translate(-25px, 25px);
+                filter: blur(0px);
             }
             90% {
-                transform: rotate(30deg) scale(1.1) translate(30px, -30px);
+                transform: rotate(25deg) scale(1.05) translate(30px, -30px);
+                filter: blur(2px);
             }
             100% {
                 transform: rotate(0deg) scale(1) translate(0, 0);
+                filter: blur(0px);
             }
         }
 
