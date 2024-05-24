@@ -10,7 +10,7 @@
       padding: 0;
       height: 100%;
       overflow: hidden;
-      background-image: url('assets/fog.png'); /* Replace with your image file */
+      background-image: url('your_background_image.jpg'); /* Replace with your image file */
       background-size: cover;
       background-position: center;
       position: relative;
@@ -75,18 +75,19 @@
       const popTime = Math.random() * 5000; // Random time between 0 and 5000 ms
 
       setTimeout(() => {
-        createDroplet(bubble.style.left, bubble.style.width, bubble.style.top);
+        const bubbleRect = bubble.getBoundingClientRect();
+        createDroplet(bubbleRect.left + window.scrollX, bubbleRect.top + window.scrollY, bubble.style.width);
         bubble.remove();
       }, popTime); // Bubble pops at a random time
     }
 
-    function createDroplet(left, size, top) {
+    function createDroplet(left, top, size) {
       const droplet = document.createElement('div');
       droplet.className = 'droplet';
-      droplet.style.left = left;
+      droplet.style.left = left + 'px';
+      droplet.style.top = top + 'px';
       droplet.style.width = '2px';
       droplet.style.height = parseFloat(size) * 4 + 'px'; // Make the droplet's height proportional to the bubble size
-      droplet.style.top = top;
       document.body.appendChild(droplet);
 
       setTimeout(() => {
