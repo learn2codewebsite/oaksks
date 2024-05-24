@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bubble Effect</title>
+  <title>Bubble Explosion Effect</title>
   <style>
     body, html {
       margin: 0;
@@ -25,11 +25,11 @@
       animation: floatBubble 5s linear forwards;
     }
 
-    .droplet {
+    .particle {
       position: absolute;
-      background-color: rgba(0, 0, 255, 0.5);
-      opacity: 0;
-      animation: dropDroplet 2s linear forwards;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 50%;
+      opacity: 1;
     }
 
     @keyframes floatBubble {
@@ -49,13 +49,13 @@
       }
     }
 
-    @keyframes popBubble {
+    @keyframes explodeParticle {
       0% {
-        transform: scale(1);
+        transform: translate(0, 0);
         opacity: 1;
       }
       100% {
-        transform: scale(1.2);
+        transform: translate(var(--particle-end-x), var(--particle-end-y));
         opacity: 0;
       }
     }
@@ -86,26 +86,38 @@
 
       setTimeout(() => {
         const bubbleRect = bubble.getBoundingClientRect();
-        bubble.style.animation = 'popBubble 0.5s forwards';
-        setTimeout(() => {
-          createDroplet(bubbleRect.left + window.scrollX, bubbleRect.top + window.scrollY + parseFloat(bubble.style.height) / 2, bubble.style.width);
-          bubble.remove();
-        }, 500); // Delay to allow the pop animation to complete
+        explodeBubble(bubbleRect.left + window.scrollX, bubbleRect.top + window.scrollY, bubble.style.width);
+        bubble.remove();
       }, popTime); // Bubble pops at a random time
     }
 
-    function createDroplet(left, top, size) {
-      const droplet = document.createElement('div');
-      droplet.className = 'droplet';
-      droplet.style.left = left + 'px';
-      droplet.style.top = top + 'px';
-      droplet.style.width = '2px';
-      droplet.style.height = parseFloat(size) * 4 + 'px'; // Make the droplet's height proportional to the bubble size
-      document.body.appendChild(droplet);
+    function explodeBubble(left, top, size) {
+      const numParticles = 10;
+      const particleSize = parseFloat(size) / 4;
 
-      setTimeout(() => {
-        droplet.remove();
-      }, 2000); // Remove the droplet after 2 seconds
+      for (let i = 0; i < numParticles; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = left + 'px';
+        particle.style.top = top + 'px';
+        particle.style.width = particleSize + 'px';
+        particle.style.height = particleSize + 'px';
+
+        const angle = Math.random() * 2 * Math.PI; // Random angle
+        const distance = Math.random() * 100; // Random distance
+        const endX = Math.cos(angle) * distance;
+        const endY = Math.sin(angle) * distance;
+
+        particle.style.setProperty('--particle-end-x', `${endX}px`);
+        particle.style.setProperty('--particle-end-y', `${endY}px`);
+
+        particle.style.animation = 'explodeParticle 1s forwards';
+        document.body.appendChild(particle);
+
+        setTimeout(() => {
+          particle.remove();
+        }, 1000); // Remove the particle after 1 second
+      }
     }
 
     setInterval(createBubble, 500); // Create a new bubble every 500ms
