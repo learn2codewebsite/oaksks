@@ -15,7 +15,8 @@
             align-items: center;
             overflow: hidden;
             position: relative;
-            background: url('your-background-image.jpg') no-repeat center center/cover;
+            background: url('assets/favicon.png') no-repeat center center/cover;
+            animation: moveBackground 5s linear infinite;
         }
 
         /* Content styling */
@@ -27,6 +28,11 @@
             background: rgba(0, 0, 0, 0.5);
             padding: 20px;
             border-radius: 10px;
+        }
+
+        @keyframes moveBackground {
+            0% { background-position: 0 0; }
+            100% { background-position: 100% 100%; }
         }
     </style>
 </head>
@@ -41,38 +47,34 @@
             return Math.random() < 0.5 ? -1 : 1;
         }
 
-        function changeDirection(element) {
+        const content = document.querySelector('.content');
+        let deltaX = randomDirection();
+        let deltaY = randomDirection();
+
+        function moveBackground() {
+            const speed = 1;
             const screenWidth = window.innerWidth;
             const screenHeight = window.innerHeight;
 
-            const rect = element.getBoundingClientRect();
+            const rect = content.getBoundingClientRect();
             const left = rect.left;
             const right = rect.right;
             const top = rect.top;
             const bottom = rect.bottom;
 
             if (left <= 0 || right >= screenWidth) {
-                element.dataset.directionX *= -1;
+                deltaX *= -1;
             }
 
             if (top <= 0 || bottom >= screenHeight) {
-                element.dataset.directionY *= -1;
+                deltaY *= -1;
             }
-        }
 
-        const content = document.querySelector('.content');
-        content.dataset.directionX = randomDirection();
-        content.dataset.directionY = randomDirection();
+            const newPosX = parseInt(content.style.backgroundPositionX || 0) + (speed * deltaX);
+            const newPosY = parseInt(content.style.backgroundPositionY || 0) + (speed * deltaY);
 
-        function moveBackground() {
-            changeDirection(content);
-
-            const speed = 1;
-            const deltaX = speed * content.dataset.directionX;
-            const deltaY = speed * content.dataset.directionY;
-
-            content.style.backgroundPositionX = `${parseInt(content.style.backgroundPositionX || 0) + deltaX}px`;
-            content.style.backgroundPositionY = `${parseInt(content.style.backgroundPositionY || 0) + deltaY}px`;
+            content.style.backgroundPositionX = `${newPosX}px`;
+            content.style.backgroundPositionY = `${newPosY}px`;
 
             requestAnimationFrame(moveBackground);
         }
