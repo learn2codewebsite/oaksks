@@ -37,7 +37,6 @@
             border: 2px solid white;             
         }
 
-        /* Button container styling */
         .button-container {
             display: flex;
             width: 100%;
@@ -47,18 +46,32 @@
 
         /* Button styling */
         .button {
-            width: calc(50% - 10px);
-            padding: 10px;
-            background-color: #C70039; /* Change this to your desired color */
-            color: #fff; /* Change this to your desired color */
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+            transition: 0.2s;
+            padding: 15px;
+            color: #fff;
+            text-align: center;
+            border-radius: 9px;
+            margin: 10px;
+            border: solid 1px #C70039;
+            background-color: #C70039;
+            box-shadow: 0px 0px 0px 0px var(--header);
+            box-sizing: border-box;
+            white-space: nowrap;
         }
 
         .button:hover {
-            background-color: #000; /* Change this to your desired color */
+            background-color: #000;
+            color: #C70039;
+            border: solid 1px #C70039;
+            cursor: pointer;
+            transform: scale(105%);
         }
     </style>
 </head>
