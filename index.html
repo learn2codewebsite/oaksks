@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wavy Overlay Website</title>
+    <title>Wavy Background Website</title>
     <style>
         /* Set the custom background */
         body {
@@ -13,41 +13,29 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: url('assets/fog.png') no-repeat center center/cover;
             overflow: hidden;
             position: relative;
+            background: url('your-background-image.jpg') no-repeat center center/cover;
+            animation: wavyBackground 5s infinite;
         }
 
-        /* Wavy overlay effect */
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            mix-blend-mode: overlay;
-            animation: wavyEffect 5s infinite;
-            pointer-events: none;
-        }
-
-        @keyframes wavyEffect {
+        /* Wavy background animation */
+        @keyframes wavyBackground {
             0%, 100% {
-                transform: translateY(0);
-                opacity: 1;
+                background-position: center center;
+                transform: translateY(0) rotate(0deg);
             }
             25% {
-                transform: translateY(-20px);
-                opacity: 0.8;
+                background-position: center top;
+                transform: translateY(-10px) rotate(1deg);
             }
             50% {
-                transform: translateY(0);
-                opacity: 1;
+                background-position: center center;
+                transform: translateY(0) rotate(0deg);
             }
             75% {
-                transform: translateY(20px);
-                opacity: 0.8;
+                background-position: center bottom;
+                transform: translateY(10px) rotate(-1deg);
             }
         }
 
@@ -66,7 +54,7 @@
 <body>
     <div class="content">
         <h1>Welcome to My Website</h1>
-        <p>This website has a custom background and a wavy overlay effect.</p>
+        <p>This website has a wavy background effect.</p>
     </div>
 </body>
 </html>
