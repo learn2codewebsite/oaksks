@@ -3,45 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moving Foggy Effect</title>
+  <title>Advanced Moving Foggy Effect</title>
   <style>
     body, html {
       margin: 0;
       padding: 0;
       height: 100%;
       overflow: hidden;
-      background-image: url('assets/fog.png'); /* Replace with your image file */
+      background-image: url('your_background_image.jpg'); /* Replace with your image file */
       background-size: cover;
+      background-position: center;
     }
 
-    .fog {
+    .fog-layer {
       position: fixed;
       top: 0;
       left: 0;
       width: 300%;
       height: 300%;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.1) 100%);
-      opacity: 0.5;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.15) 100%);
       pointer-events: none;
       z-index: 1;
-      animation: moveFog 20s linear infinite;
     }
 
-    @keyframes moveFog {
-      0% {
-        transform: translate(-50%, -50%);
-      }
-      50% {
-        transform: translate(50%, 50%);
-      }
-      100% {
-        transform: translate(-50%, -50%);
-      }
+    .fog-layer:nth-child(1) {
+      opacity: 0.2;
+      animation: moveFog1 30s linear infinite;
+    }
+
+    .fog-layer:nth-child(2) {
+      opacity: 0.15;
+      animation: moveFog2 45s linear infinite;
+    }
+
+    .fog-layer:nth-child(3) {
+      opacity: 0.1;
+      animation: moveFog3 60s linear infinite;
+    }
+
+    @keyframes moveFog1 {
+      0% { transform: translate(-50%, -50%); }
+      50% { transform: translate(50%, 50%); }
+      100% { transform: translate(-50%, -50%); }
+    }
+
+    @keyframes moveFog2 {
+      0% { transform: translate(50%, 50%); }
+      50% { transform: translate(-50%, -50%); }
+      100% { transform: translate(50%, 50%); }
+    }
+
+    @keyframes moveFog3 {
+      0% { transform: translate(-25%, -25%); }
+      50% { transform: translate(25%, 25%); }
+      100% { transform: translate(-25%, -25%); }
+    }
+
+    h1 {
+      position: relative;
+      z-index: 2;
+      color: white;
+      text-align: center;
+      margin-top: 20%;
     }
   </style>
 </head>
 <body>
-  <div class="fog"></div>
-  <h1 style="position: relative; z-index: 2; color: white;">Welcome to My Website!</h1>
+  <div class="fog-layer"></div>
+  <div class="fog-layer"></div>
+  <div class="fog-layer"></div>
+  <h1>Welcome to My Website!</h1>
 </body>
 </html>
