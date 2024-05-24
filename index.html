@@ -24,7 +24,17 @@
       background-color: rgba(255, 255, 255, 0.7);
       border-radius: 50%;
       opacity: 0;
-      animation: floatBubble 5s linear infinite;
+      animation: floatBubble 5s linear;
+    }
+
+    .droplet {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: rgba(0, 0, 255, 0.5);
+      border-radius: 50%;
+      opacity: 0;
+      animation: dropDroplet 3s linear;
     }
 
     @keyframes floatBubble {
@@ -35,8 +45,22 @@
       50% {
         opacity: 1;
       }
+      80% {
+        opacity: 1;
+      }
       100% {
-        transform: translateY(-200vh);
+        transform: translateY(-100vh);
+        opacity: 0;
+      }
+    }
+
+    @keyframes dropDroplet {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh);
         opacity: 0;
       }
     }
@@ -53,8 +77,23 @@
       document.body.appendChild(bubble);
 
       setTimeout(() => {
+        createDroplet(bubble.style.left, bubble.style.width);
         bubble.remove();
-      }, 5000); // Remove the bubble after 5 seconds
+      }, 5000); // Bubble pops after 5 seconds
+    }
+
+    function createDroplet(left, size) {
+      const droplet = document.createElement('div');
+      droplet.className = 'droplet';
+      droplet.style.left = left;
+      droplet.style.width = parseFloat(size) / 2 + 'px';
+      droplet.style.height = droplet.style.width;
+      droplet.style.top = '0px';
+      document.body.appendChild(droplet);
+
+      setTimeout(() => {
+        droplet.remove();
+      }, 3000); // Remove the droplet after 3 seconds
     }
 
     setInterval(createBubble, 500); // Create a new bubble every 500ms
