@@ -3,7 +3,7 @@ body, html {
   padding: 0;
   height: 100%;
   overflow: hidden;
-  background-image: url('your_background_im'); /* Replace with your image file */
+  background-image: #000; /* Replace with your image file */
   background-size: cover;
   background-position: center;
   position: relative;
