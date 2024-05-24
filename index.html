@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Water Distortion Background Website</title>
+    <title>Random Direction Background Website</title>
     <style>
         /* Set the custom background */
         body {
@@ -16,26 +16,6 @@
             overflow: hidden;
             position: relative;
             background: url('your-background-image.jpg') no-repeat center center/cover;
-            animation: waterDistortion 5s infinite;
-        }
-
-        /* Water distortion animation */
-        @keyframes waterDistortion {
-            0% {
-                transform: translateY(0%);
-            }
-            25% {
-                transform: translateY(5%);
-            }
-            50% {
-                transform: translateY(10%);
-            }
-            75% {
-                transform: translateY(15%);
-            }
-            100% {
-                transform: translateY(0%);
-            }
         }
 
         /* Content styling */
@@ -53,7 +33,51 @@
 <body>
     <div class="content">
         <h1>Welcome to My Website</h1>
-        <p>This website has a water distortion background effect.</p>
+        <p>This website has a random direction background effect.</p>
     </div>
+
+    <script>
+        function randomDirection() {
+            return Math.random() < 0.5 ? -1 : 1;
+        }
+
+        function changeDirection(element) {
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+
+            const rect = element.getBoundingClientRect();
+            const left = rect.left;
+            const right = rect.right;
+            const top = rect.top;
+            const bottom = rect.bottom;
+
+            if (left <= 0 || right >= screenWidth) {
+                element.dataset.directionX *= -1;
+            }
+
+            if (top <= 0 || bottom >= screenHeight) {
+                element.dataset.directionY *= -1;
+            }
+        }
+
+        const content = document.querySelector('.content');
+        content.dataset.directionX = randomDirection();
+        content.dataset.directionY = randomDirection();
+
+        function moveBackground() {
+            changeDirection(content);
+
+            const speed = 1;
+            const deltaX = speed * content.dataset.directionX;
+            const deltaY = speed * content.dataset.directionY;
+
+            content.style.backgroundPositionX = `${parseInt(content.style.backgroundPositionX || 0) + deltaX}px`;
+            content.style.backgroundPositionY = `${parseInt(content.style.backgroundPositionY || 0) + deltaY}px`;
+
+            requestAnimationFrame(moveBackground);
+        }
+
+        moveBackground();
+    </script>
 </body>
 </html>
