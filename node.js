@@ -8,11 +8,19 @@ function createBubble() {
 
   const popTime = Math.random() * 5000; 
 
+  bubble.addEventListener('click', () => {
+    popBubble(bubble);
+  });
+
   setTimeout(() => {
-    const bubbleRect = bubble.getBoundingClientRect();
-    explodeBubble(bubbleRect.left + window.scrollX, bubbleRect.top + window.scrollY, bubble.style.width);
-    bubble.remove();
+    popBubble(bubble);
   }, popTime); 
+}
+
+function popBubble(bubble) {
+  const bubbleRect = bubble.getBoundingClientRect();
+  explodeBubble(bubbleRect.left + window.scrollX, bubbleRect.top + window.scrollY, bubble.style.width);
+  bubble.remove();
 }
 
 function explodeBubble(left, top, size) {
