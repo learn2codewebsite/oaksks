@@ -10,7 +10,9 @@
       padding: 0;
       height: 100%;
       overflow: hidden;
-      background-color: #C70039; 
+      background-image: url('assets/fog.png'); /* Replace with your image file */
+      background-size: cover;
+      background-position: center;
       position: relative;
     }
 
@@ -60,7 +62,13 @@
   </style>
 </head>
 <body>
+  <audio id="popSound" preload="auto">
+    <source src="data:audio/mp3;base64,//uQxAARb8QAYF/5B6AAABlTEFNRTMuOTguMAAAAwAxAERvZyBQYXJrIExvAAAAEAAHZnJlZS1mbGFjYQA/2wBDAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQH/2wBDAgICAgICAgMCAgMDBAYEBQYFBAYFBQYGBwYGBgcHBwgJCQkICQkLCQoLDAwMDAwMDxYQEBAXFhciGhYkJDQyMyw/QDkAKAFj/9sAQwADBAYEBAQGBAYGBwYIBwYJCQgKCQ0LDw0ODxYQEBAVEBciFRYkJBQdHSAmJCQkJDQyMyw/QDkAMDCw/QDkAMFCQ0yMyw/QDkAMDCw/QDkAMFCQ0yMyw/QDkAMDCw/QDkAMFCQ0yMyw/QDkAMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMD/8AAEQgAEgASAwEiAAIRAQMRAf/EABwAAQADAAMBAAAAAAAAAAAAAAMEBQYHAQgCCf/EADoQAAIBAwMCBAIGBwAAAAAAAAABAgMEEQUSIQYTMTJhBCJCcYGRBhQVIkKhscHR8CQzQ5Lh8ST/xAAXAQEBAQEAAAAAAAAAAAAAAAAAAQID/8QAGxEBAQEBAQEBAQAAAAAAAAAAAAEREiExIkH/2gAMAwEAAhEDEQA/AKLYGyulSaVCyxLsu7hdcax6yOeHRyA72kKFSFAH4cfOHk3bZopoxrbdt3DSkDBqYI9gSxgmLXEJsbXxr00V67UIASW5MJApUlSMsVw6ZTZdI2SGwYB+f37c/NFVXEYAbrsKTUdRKoiy5Lw2u/WEXh+JNqVAi4aenx3Ur+MyF7mNjlvVLlD4GNdpuuH3UdbJtB70XN8mkrU6ft49jvbhq2ehFg+hY+u/Id72nGjbA2hmgF+8OxQNSdWJXFtVhG7yF8m5iVug13tWwBxDYOcWukT5pEhxAIt1YtkMByBmMjNPRueWbuPZmGqpItXGx9mKgyrPJJ3UryV7EkOZbXOxuDOWsWVaOZTHc6V0R1lXaLom60cugPZ1CijJ1qM4sEWe8U4o7F8Py2lB9NpQn5Op2rDGie8maucc8VXUhKZqekc1qaY14pNoEMmtptm2jP6GLosONgdmsyyCW0qCUDkH4bgKguFr3nYcs81NbkD/9k=" type="audio/mp3">
+  </audio>
+
   <script>
+    const popSound = document.getElementById('popSound');
+
     function createBubble() {
       const bubble = document.createElement('div');
       bubble.className = 'bubble';
@@ -72,18 +80,22 @@
       const popTime = Math.random() * 5000; // Random time between 0 and 5000 ms
 
       bubble.addEventListener('click', () => {
-        popBubble(bubble);
+        popBubble(bubble, true);
       });
 
       setTimeout(() => {
-        popBubble(bubble);
+        popBubble(bubble, false);
       }, popTime); // Bubble pops at a random time
     }
 
-    function popBubble(bubble) {
+    function popBubble(bubble, playSound) {
       const bubbleRect = bubble.getBoundingClientRect();
       explodeBubble(bubbleRect.left + window.scrollX, bubbleRect.top + window.scrollY, bubble.style.width);
       bubble.remove();
+      if (playSound) {
+        popSound.currentTime = 0;
+        popSound.play();
+      }
     }
 
     function explodeBubble(left, top, size) {
